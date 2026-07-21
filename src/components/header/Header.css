@@ -2,6 +2,21 @@ header {
 height: 100vh;
 padding-top: 7rem;
 overflow: hidden;
+position: relative;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: -10rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45rem;
+    height: 45rem;
+    background: radial-gradient(circle, rgba(77, 181, 255, 0.18), transparent 65%);
+    filter: blur(10px);
+    pointer-events: none;
+    z-index: -1;
 }
 
 .header__container {
@@ -17,6 +32,42 @@ margin-top: 2.5rem;
 display: flex;
 gap: 1.2rem;
 justify-content: center;
+}
+
+@property --cv-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.cv-btn {
+    position: relative;
+}
+
+.cv-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(from var(--cv-angle),
+        transparent 0%,
+        transparent 82%,
+        var(--color-primary) 90%,
+        #fff 93%,
+        var(--color-primary) 96%,
+        transparent 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: cv-border-spin 2.8s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes cv-border-spin {
+    to {
+        --cv-angle: 360deg;
+    }
 }
 
 /* Header Socials */
@@ -38,6 +89,18 @@ justify-content: center;
     background: var(--color-primary);
 }
 
+.header__socials a {
+    padding: 0.6rem;
+    border-radius: 50%;
+    display: flex;
+    transition: var(--transition);
+}
+
+.header__socials a:hover {
+    background: var(--glass-bg-hover);
+    transform: translateY(-4px);
+}
+
 /* Me */
 .me {
     background: linear-gradient(var(--color-primary), transparent);
@@ -49,6 +112,70 @@ justify-content: center;
     border-radius: 12rem 12rem 0 0;
     overflow: hidden;
     padding: 5rem 1.5rem 1.5em 1.5rem;
+    box-shadow: 0 0 60px rgba(77, 181, 255, 0.35);
+}
+
+/* Diploma button + modal */
+.diploma__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    font: inherit;
+    font-size: 0.95rem;
+}
+
+.diploma__trigger-icon {
+    font-size: 1.15rem;
+}
+
+.diploma__modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(4, 8, 20, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 2rem;
+}
+
+.diploma__modal-content {
+    position: relative;
+    max-width: 40rem;
+    width: 100%;
+    background: var(--color-bg);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(77, 181, 255, 0.35);
+}
+
+.diploma__modal-content img {
+    width: 100%;
+    display: block;
+}
+
+.diploma__close {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.8rem;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.diploma__close:hover {
+    background: rgba(0, 0, 0, 0.8);
 }
 
 /* Scroll Down */

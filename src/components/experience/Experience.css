@@ -5,15 +5,21 @@ gap: 2rem;
 }
 
 .experience__container > div {
-background: var(--color-bg-variant);
+background: var(--glass-bg);
+backdrop-filter: var(--blur);
+-webkit-backdrop-filter: var(--blur);
 padding: 2.4rem 5rem;
 border-radius: 2rem;
-border: 1px solid transparent;
+border: 1px solid var(--glass-border);
+box-shadow: var(--glass-shadow);
+transition: var(--transition);
 }
 
 .experience__container > div:hover {
-background: transparent;
-border-color: var(--color-primary-variant);
+background: var(--glass-bg-hover);
+border-color: var(--glass-border-hover);
+box-shadow: var(--glow-shadow);
+transform: translateY(-4px);
 cursor: default;
 }
 
@@ -32,6 +38,11 @@ row-gap: 2rem;
 .experience__details {
 display: flex;
 gap: 1rem;
+transition: var(--transition);
+}
+
+.experience__details:hover {
+transform: translateX(4px);
 }
 
 .experience__details-icon {
@@ -64,6 +75,6 @@ color: var(--color-primary);
 
     .experience__container > div {
         width: 100%;
-        padding: 2rem 1 rem;
+        padding: 2rem 1rem;
     }
 }

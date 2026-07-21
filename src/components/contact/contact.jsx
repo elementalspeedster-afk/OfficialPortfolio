@@ -5,6 +5,7 @@ import {RiMessengerLine} from "react-icons/ri";
 import {BsWhatsapp} from "react-icons/bs";
 import {useRef} from 'react';
 import emailjs from '@emailjs/browser';
+import { motion } from 'framer-motion'
 
 
 const Contact = () => {
@@ -34,7 +35,13 @@ const Contact = () => {
       <h5>Get In Touch</h5>
       <h2>Contact Me</h2>
       
-      <div className="container contact__container">
+      <motion.div
+        className="container contact__container"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="contact__options">
           <article className="contact__option">
             <MdOutlineEmail className='contact__option-icon'/>
@@ -62,7 +69,7 @@ const Contact = () => {
           <textarea name="message" rows="7" placeholder='Your Message' required ></textarea>
           <button type='submit' className='btn btn-primary'>Send Message</button>
         </form>
-      </div>
+      </motion.div>
     </section>
   )
 }

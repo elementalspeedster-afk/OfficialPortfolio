@@ -5,10 +5,11 @@
 }
 
 .about__me {
-    width: 100%;
+    width: 85%;
+    margin: 0 auto;
     aspect-ratio: 1/1;
     border-radius: 2rem;
-    background: linear-gradient( 
+    background: linear-gradient(
         45deg,
         transparent,
         var(--color-primary),
@@ -16,6 +17,7 @@
     );
     display: grid;
     place-items: center;
+    box-shadow: 0 0 50px rgba(77, 181, 255, 0.25);
 }
 
 .about__me-image {
@@ -23,10 +25,11 @@
     overflow: hidden;
     transform: rotate(10deg);
     transition: var(--transition);
+    box-shadow: var(--glass-shadow);
 }
 
 .about__me-image:hover {
-    transform: rotate(0);
+    transform: rotate(0) scale(1.03);
 }
 
 .about__cards {
@@ -35,17 +38,22 @@
     gap: 1.5rem;
 }
 .about__card {
-    background: var(--color-bg-variant);
-    border: 1px solid transparent;
+    background: var(--glass-bg);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border: 1px solid var(--glass-border);
     border-radius: 1rem;
     padding: 2rem;
     text-align: center;
     transition: var(--transition);
+    box-shadow: var(--glass-shadow);
 }
 
 .about__card:hover {
-    background: transparent;
-    border-color: var(--color-primary-variant);
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--glow-shadow);
+    transform: translateY(-6px);
     cursor: default;
 }
 

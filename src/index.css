@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -11,34 +11,47 @@
 }
 
 :root {
-  --color-bg: #1f1f38;
+  --color-bg: #0f0f2b;
   --color-bg-variant: #2c2c6c;
   --color-primary: #4db5ff;
   --color-primary-variant: rgba(77, 181, 255, 0.4);
   --color-white: #fff;
   --color-light: rgba(255, 255, 255, 0.6);
-  
+
+  --glass-bg: rgba(44, 44, 108, 0.35);
+  --glass-bg-hover: rgba(77, 181, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --glass-border-hover: rgba(77, 181, 255, 0.5);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --glow-shadow: 0 12px 36px rgba(77, 181, 255, 0.18);
+  --blur: blur(16px);
+
   --transition: all 400ms ease;
-  
+
   --container-width-lg: 75%;
   --container-width-md: 86%;
   --container-width-sm: 90%;
 }
 
 html {
-scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {
-display: none;
+  display: none;
 }
 
 body {
-font-family: "Poppins", sans-serif;
-background: var(--color-bg);
-color: var(--color-white);
-line-height: 1.7;
-background-image: url(../src/assets/bg-texture.png);
+  font-family: "Poppins", sans-serif;
+  background: var(--color-bg);
+  color: var(--color-white);
+  line-height: 1.7;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(77, 181, 255, 0.16), transparent 35%),
+    radial-gradient(circle at 85% 10%, rgba(140, 84, 255, 0.16), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(77, 181, 255, 0.1), transparent 45%),
+    linear-gradient(180deg, #0f0f2b 0%, #15153a 100%);
 }
 
 /*General Styles*/
@@ -53,26 +66,32 @@ h2,
 h3,
 h4,
 h5 {
-font-weight: 500;
+  font-weight: 500;
 }
 
 h1 {
-font-size: 2.5rem;
+  font-size: 2.9rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 section {
-margin-top: 8rem;
+  margin-top: 8rem;
 }
 
 section > h2,
 section > h5 {
-text-align: center;
-color: var(--color-light);
+  text-align: center;
+  color: var(--color-light);
 }
 
 section > h2 {
-  color: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary), #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   margin-bottom: 3rem;
+  font-weight: 600;
 }
 
 .text-light {
@@ -85,29 +104,58 @@ a {
 }
 
 a:hover {
-color: var(--color-white);
+  color: var(--color-white);
 }
 
 .btn {
-width: max-content;
-display: inline-block;
-color: var(--color-primary);
-padding: 0.75rem 1.2rem;
-border-radius: 0.4rem;
-cursor: pointer;
-border: 1px solid var(--color-primary);
-transition: var(--transition);
+  width: max-content;
+  display: inline-block;
+  color: var(--color-primary);
+  padding: 0.75rem 1.4rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: 1px solid var(--color-primary);
+  transition: var(--transition);
+  backdrop-filter: var(--blur);
 }
 
 .btn:hover {
-background: var(--color-white);
-color: var(--color-bg);
-border-color: transparent;
+  background: var(--color-primary);
+  color: var(--color-bg);
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: var(--glow-shadow);
 }
 
 .btn-primary {
-  background: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary), #7c9bff);
   color: var(--color-bg);
+  border-color: transparent;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #7c9bff, var(--color-primary));
+  color: var(--color-bg);
+  transform: translateY(-3px);
+  box-shadow: var(--glow-shadow);
+}
+
+/* Reusable glass card */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: var(--transition);
+}
+
+.glass-card:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glow-shadow);
+  transform: translateY(-6px);
 }
 
 img {

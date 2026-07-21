@@ -1,7 +1,6 @@
 nav {
-background: rgba(0, 0, 0, 0.3);
+background: rgba(15, 15, 43, 0.55);
 width: max-content;
-display: block;
 padding: 0.7rem 1.7rem;
 z-index: 2;
 position: fixed;
@@ -11,7 +10,10 @@ bottom: 2rem;
 display: flex;
 gap: 0.8rem;
 border-radius: 3rem;
-backdrop-filter: blur (15px);
+border: 1px solid var(--glass-border);
+backdrop-filter: blur(15px);
+-webkit-backdrop-filter: blur(15px);
+box-shadow: var(--glass-shadow);
 }
 
 nav a {
@@ -21,13 +23,17 @@ border-radius: 50%;
 display: flex;
 color: var(--color-light);
 font-size: 1.1rem;
+transition: var(--transition);
 }
 
 nav a:hover {
-    background: rgba(0, 0, 0, 0.3)
+    background: var(--glass-bg-hover);
+    color: var(--color-primary);
+    transform: translateY(-3px);
 }
 
 nav a.active {
     background: var(--color-primary);
     color: var(--color-bg);
+    box-shadow: 0 0 18px var(--color-primary-variant);
 }

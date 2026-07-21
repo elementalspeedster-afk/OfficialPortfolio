@@ -5,22 +5,35 @@ gap: 2.5rem;
 }
 
 .portfolio__item {
-background: var(--color-bg-variant);
+background: var(--glass-bg);
+backdrop-filter: var(--blur);
+-webkit-backdrop-filter: var(--blur);
 padding: 1.3rem;
 border-radius: 2rem;
-border: 1px solid transparent;
+border: 1px solid var(--glass-border);
+box-shadow: var(--glass-shadow);
 transition: var(--transition);
 }
 
 .portfolio__item:hover {
-border-color: var(--color-primary-variant);
-background: tr ansparent;
+border-color: var(--glass-border-hover);
+background: var(--glass-bg-hover);
+box-shadow: var(--glow-shadow);
+transform: translateY(-6px);
 }
 
 
 .portfolio__item-image {
     border-radius: 1.5rem;
     overflow: hidden;
+}
+
+.portfolio__item-image img {
+    transition: var(--transition);
+}
+
+.portfolio__item:hover .portfolio__item-image img {
+    transform: scale(1.06);
 }
 
 .portfolio__item h3 {

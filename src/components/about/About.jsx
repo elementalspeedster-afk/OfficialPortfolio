@@ -4,7 +4,12 @@ import ME from '../../assets/me-about.jpg'
 import {FaAward} from "react-icons/fa";
 import {FiUsers} from "react-icons/fi";
 import {LuFolderSearch} from "react-icons/lu";
+import { motion } from 'framer-motion'
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0 }
+}
 
 const About = () => {
   return (
@@ -13,38 +18,49 @@ const About = () => {
       <h2>About Me</h2>
 
       <div className="container about__container">
-        <div className="about__me">
+        <motion.div
+          className="about__me"
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="about__me-image">
             <img src={ME} alt ="About Image" />
           </div>
-        </div>
+        </motion.div>
         <div className="about__content">
-          <div className="about__cards">
-            <article className='about__card'>
+          <motion.div
+            className="about__cards"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ staggerChildren: 0.15 }}
+          >
+            <motion.article className='about__card' variants={cardVariants} transition={{ duration: 0.5 }}>
               <FaAward className='about__icon'/>
               <h5>Experience</h5>
-              <small>No professional Experience</small>
-            </article>
-            <article className='about__card'>
+              <small>480-Hour Internship</small>
+            </motion.article>
+            <motion.article className='about__card' variants={cardVariants} transition={{ duration: 0.5 }}>
               <FiUsers className='about__icon'/>
               <h5>Clients</h5>
               <small>None</small>
-            </article>
-            <article className='about__card'>
+            </motion.article>
+            <motion.article className='about__card' variants={cardVariants} transition={{ duration: 0.5 }}>
               <LuFolderSearch className='about__icon'/>
               <h5>Project</h5>
               <small>3+ Completed</small>
-            </article>
-          </div>
+            </motion.article>
+          </motion.div>
           <p>
-            I am a motivated to become a game developer in unity and unreal, Blender sculptor/assets maker, 
-            Web developer and software Developer. I am deeply committed to learning and strongly believe that 
-            knowledge is power. I enjoy building interactive digital experiences and continuously improving 
-            my technical and creative skills. I am an eager and passionate individual with a relentless drive for 
-            personal and professional growth. I continuously expanding my skills and knowledge, and actively seeking 
-            opportunities to contribute to creative projects and organizational success. I aim to leverage my 
-            creativity and technical expertise to achieve goals, exceed expectations, and bring engaging ideas to life
-            through technology and design.
+            I am a motivated Computer Science student with hands-on experience in frontend and backend
+            development through a 480-hour internship at Strastan Solution Corporation. I've worked with
+            React, Next.js, TypeScript, Tailwind CSS, AWS, and frontend accessibility optimization on
+            real-world production components involving messaging systems, notification systems, reusable
+            UI architecture, and frontend performance improvements. I'm passionate about learning modern
+            web technologies, improving user experience, and building maintainable software solutions in
+            collaborative development environments.
           </p>
 
           <a href="#contact" className='btn btn-primary'>Let's Talk</a>

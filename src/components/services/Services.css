@@ -1,28 +1,57 @@
-.services__container {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
+.services__marquee {
+overflow: hidden;
+-webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.services__track {
+display: flex;
+width: max-content;
 gap: 3rem;
+animation: services-scroll 30s linear infinite;
+}
+
+.services__track:hover {
+animation-play-state: paused;
+}
+
+@keyframes services-scroll {
+from { transform: translateX(0); }
+to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services__track {
+    animation: none;
+  }
 }
 
 .service {
-background: var(--color-bg-variant);
+flex: 0 0 340px;
+width: 340px;
+background: var(--glass-bg);
+backdrop-filter: var(--blur);
+-webkit-backdrop-filter: var(--blur);
 border-radius: 0 0 2rem 2rem;
-border: 1px solid var(--color-primary);
+border: 1px solid var(--glass-border);
 height: fit-content;
+box-shadow: var(--glass-shadow);
 transition: var(--transition);
 }
 
 .service:hover {
-background: transparent;
-border-color: var(--color-primary-variant);
+background: var(--glass-bg-hover);
+border-color: var(--glass-border-hover);
+box-shadow: var(--glow-shadow);
+transform: translateY(-6px);
 cursor: default;
 }
 
 .service__head {
-    background: var(--color-primary);
+    background: linear-gradient(135deg, var(--color-primary), #7c9bff);
     padding: 2rem;
     border-radius: 0 0 2rem 2rem;
-    box-shadow: 0 2rem 1rem rgba(0, 0, 0.1);
+    box-shadow: 0 2rem 1rem rgba(0, 0, 0, 0.15);
 }
 
 .service__head h3 {
@@ -53,20 +82,21 @@ font-size: 0.9rem;
 
 /* Media Queries (Medium Devices)*/
 @media screen and (max-width: 1024px){
-    .services__container {
-        grid-template-columns: 1fr 1fr;
+    .services__track {
         gap: 2rem;
     }
 
     .service {
+        flex-basis: 300px;
+        width: 300px;
         height: auto;
     }
 }
 
 /* Media Queries (Small Devices)*/
 @media screen and (max-width: 600px){
-    .service__content p {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    .service {
+        flex-basis: 260px;
+        width: 260px;
     }
 }

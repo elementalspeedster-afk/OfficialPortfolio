@@ -13,7 +13,11 @@ border: 0.4rem solid var(--color-primary-variant);
 }
 
 .testimonial {
-background: var(--color-bg-variant);
+background: var(--glass-bg);
+backdrop-filter: var(--blur);
+-webkit-backdrop-filter: var(--blur);
+border: 1px solid var(--glass-border);
+box-shadow: var(--glass-shadow);
 text-align: center;
 padding: 2rem;
 border-radius: 2rem;

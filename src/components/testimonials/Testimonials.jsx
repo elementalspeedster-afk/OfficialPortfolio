@@ -11,27 +11,28 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { motion } from 'framer-motion'
 
 const data = [
   {
     avatar: AVTR1,
     name: 'Finn',
-    review: 'He is the Best'
+    review: 'Placeholder'
   },
   {
     avatar: AVTR2,
     name: 'Spongebob',
-    review: 'You can Trust him'
+    review: 'Placeholder'
   },
   {
     avatar: AVTR3,
     name: 'Mickey Mouse',
-    review: 'Number 1'
+    review: 'Placeholder'
   },
   {
     avatar: AVTR4,
     name: 'Bugs Bunny',
-    review: 'He wont let you down doc'
+    review: 'Placeholder'
   },
 ]
 
@@ -41,6 +42,12 @@ const Testimonials = () => {
       <h5>Review from clients</h5>
       <h2>Testimonials</h2>
 
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6 }}
+      >
       <Swiper className="container testimonials__container"
       modules={[Pagination]}
       spaceBetween={40}
@@ -60,6 +67,7 @@ const Testimonials = () => {
           }) 
         }
       </Swiper>
+      </motion.div>
     </section>
   )
 }

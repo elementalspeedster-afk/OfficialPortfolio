@@ -1,6 +1,7 @@
 import React from 'react'
 import './Experience.css'
 import {BsPatchCheckFill} from "react-icons/bs";
+import { motion } from 'framer-motion'
 
 
 const Experience = () => {
@@ -10,7 +11,13 @@ const Experience = () => {
       <h2>My Experience</h2>
 
       <div className="container experience__container">
-        <div className="experience__frontend">
+        <motion.div
+          className="experience__frontend"
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+        >
           <h3>Frontend Development</h3>
           <div className="experience__content">
             <article className='experience__details'>
@@ -24,7 +31,7 @@ const Experience = () => {
               <BsPatchCheckFill className='experience__details-icon'/>
               <div>
                 <h4>CSS</h4>
-                <small className='text-light'> Intermediate</small>
+                <small className='text-light'> Experienced</small>
               </div>
             </article>
             <article className='experience__details'>
@@ -37,14 +44,14 @@ const Experience = () => {
             <article className='experience__details'>
               <BsPatchCheckFill className='experience__details-icon'/>
               <div>
-                <h4>Bootstrap</h4>
+                <h4>TypeScript</h4>
                 <small className='text-light'> Experienced</small>
               </div>
             </article>
             <article className='experience__details'>
               <BsPatchCheckFill className='experience__details-icon'/>
               <div>
-                <h4>Tailwind</h4>
+                <h4>Tailwind CSS</h4>
                 <small className='text-light'> Experienced</small>
               </div>
             </article>
@@ -55,9 +62,22 @@ const Experience = () => {
                 <small className='text-light'> Experienced</small>
               </div>
             </article>
+            <article className='experience__details'>
+              <BsPatchCheckFill className='experience__details-icon'/>
+              <div>
+                <h4>Next.js</h4>
+                <small className='text-light'> Experienced</small>
+              </div>
+            </article>
           </div>
-        </div>
-       <div className="experience__backend">
+        </motion.div>
+       <motion.div
+          className="experience__backend"
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+        >
         <h3>Backend Development</h3>
           <div className="experience__content">
             <article className='experience__details'>
@@ -70,7 +90,14 @@ const Experience = () => {
             <article className='experience__details'>
               <BsPatchCheckFill className='experience__details-icon'/>
               <div>
-                <h4>MongoDB</h4>
+                <h4>AWS (API Gateway, Cognito, CDK)</h4>
+                <small className='text-light'> Intermediate</small>
+              </div>
+            </article>
+            <article className='experience__details'>
+              <BsPatchCheckFill className='experience__details-icon'/>
+              <div>
+                <h4>MySQL</h4>
                 <small className='text-light'> Intermediate</small>
               </div>
             </article>
@@ -84,19 +111,12 @@ const Experience = () => {
             <article className='experience__details'>
               <BsPatchCheckFill className='experience__details-icon'/>
               <div>
-                <h4>MySQL</h4>
-                <small className='text-light'> Basic</small>
-              </div>
-            </article>
-            <article className='experience__details'>
-              <BsPatchCheckFill className='experience__details-icon'/>
-              <div>
                 <h4>Python</h4>
-                <small className='text-light'> Experienced</small>
+                <small className='text-light'> Intermediate</small>
               </div>
             </article>
           </div>
-        </div>
+        </motion.div>
      </div>
     </section>
   )
